@@ -10,16 +10,43 @@
   border: 3px solid black;
   border-radius: 16px;
   background-color: white;
+  padding: 1rem 3rem;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+
+  animation: slide-in 1s ease-out;
 }
 
 .dialog__img {
 }
 
 .dialog__text {
-  width: 65%;
+  width: 80%;
   height: 80%;
+}
+
+.dialog__text {
+  /* animate the words being typed in */
+  animation: type 2s steps(40, end);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.dialog__text p {
+  border-right: 5px solid black;
+  padding: 0 1rem;
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    left: 50%;
+    transform: translate(-50%, 100%);
+  }
 }

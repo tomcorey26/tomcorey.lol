@@ -9,17 +9,7 @@ export const Dialog: React.FC = (props) => {
         alt="placeholder"
       />
       <div className="dialog__text">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint aliquam
-          modi nisi, corporis exercitationem voluptatibus suscipit assumenda
-          dolorem eveniet sequi voluptatum omnis libero ipsam natus amet error
-          veniam fuga quam quasi officia rem consequatur laboriosam perferendis
-          rerum! Enim, itaque eligendi? Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Eveniet aliquid mollitia fuga dicta. Facilis eaque
-          officia molestiae minima nisi quae molestias vitae similique placeat
-          optio assumenda numquam sit saepe maxime fugiat soluta quasi,
-          veritatis odio labore laudantium sapiente cumque. Amet.
-        </p>
+        <p>sup bitch, welcome to the website. My names hamster. Fuck you lol</p>
       </div>
     </div>
   );

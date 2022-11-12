@@ -1,6 +1,24 @@
 import '../styles/dialog.css';
 
+import { useState } from 'react';
+import { dialogTree } from '../constants';
+
+interface DialogOptionProps {
+  option: { text: string; next: string };
+  onClick: () => void;
+}
+const DialogOption: React.FC<DialogOptionProps> = ({ option, onClick }) => {
+  return (
+    <button className="dialog-option" onClick={onClick}>
+      {option.text}
+    </button>
+  );
+};
+
 export const Dialog: React.FC = (props) => {
+  const [dialog, setDialog] = useState<keyof typeof dialogTree>('1');
+
+  const currentDialog = dialogTree[dialog];
   return (
     <div className="dialog">
       <img
@@ -9,7 +27,15 @@ export const Dialog: React.FC = (props) => {
         alt="placeholder"
       />
       <div className="dialog__text">
-        <p>sup bitch, welcome to the website. My names hamster. Fuck you lol</p>
+        <p>{currentDialog.text}</p>
+        {currentDialog.options.map((option) => (
+          <DialogOption
+            key={option.text}
+            option={option}
+            onClick={() => setDialog(option.next)}
+          />
+        ))}
+        {dialog}
       </div>
     </div>
   );

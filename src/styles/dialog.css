@@ -1,0 +1,25 @@
+.dialog {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80vw;
+  height: max(20vh, 300px);
+  z-index: 2;
+  display: flex;
+  border: 3px solid black;
+  border-radius: 16px;
+  background-color: white;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dialog__img {
+}
+
+.dialog__text {
+  width: 65%;
+  height: 80%;
+}

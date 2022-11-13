@@ -15,6 +15,7 @@ import { ParticleBackground } from '../components/ParticleBackground';
   <body>
     <Header title={SITE_TITLE} />
     <main>
+      <img class="portrait" src="tom.jpeg" alt="Tom Corey" />
       <h1>👊 Welcome, Bruther</h1>
       <p>
         This template comes with a few integrations already configured in your
@@ -58,5 +59,16 @@ import { ParticleBackground } from '../components/ParticleBackground';
     <!-- <Dialog client:load /> -->
     <ParticleBackground client:load />
     <Footer />
+    <style>
+      main {
+        text-align: center;
+      }
+      .portrait {
+        width: 40%;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
   </body>
 </html>

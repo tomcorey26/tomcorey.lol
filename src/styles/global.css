@@ -4,6 +4,7 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+/* https://coolors.co/palette/000000-14213d-fca311-e5e5e5-ffffff */
 :root {
   --black: #000000ff;
   --oxford-blue: #14213dff;
@@ -37,6 +38,7 @@ body {
 }
 
 body {
+  background-color: var(--black);
   font-family: Verdana, sans-serif;
   margin: auto;
   padding: 20px;

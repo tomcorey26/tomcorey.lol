@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import { Dialog } from '../components/Dialog';
+import { ParticleBackground } from '../components/ParticleBackground';
 ---
 
 <!DOCTYPE html>
@@ -54,7 +55,8 @@ import { Dialog } from '../components/Dialog';
         </a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
       </p>
     </main>
-    <Dialog client:load />
+    <!-- <Dialog client:load /> -->
+    <ParticleBackground client:load />
     <Footer />
   </body>
 </html>

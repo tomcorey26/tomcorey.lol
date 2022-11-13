@@ -4,10 +4,36 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+:root {
+  --black: #000000ff;
+  --oxford-blue: #14213dff;
+  --orange-web: #fca311ff;
+  --platinum: #e5e5e5ff;
+  --white: #ffffffff;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+      --background-color: #01242e;
+      --heading-color: #eee;
+      --text-color: #ddd;
+      --link-color: #8cc2dd;
+      --visited-color:  #8b6fcb;
+      --code-background-color: #000;
+      --code-color: #ddd;
+      --blockquote-color: #ccc;
+  }
+} */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
@@ -16,11 +42,10 @@ body {
   padding: 20px;
   max-width: 65ch;
   text-align: left;
-  background-color: #fff;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1.5;
-  color: #444;
+  color: var(--platinum);
 }
 
 h1,
@@ -31,10 +56,10 @@ h5,
 h6,
 strong,
 b {
-  color: #222;
+  color: var(--white);
 }
 a {
-  color: #3273dc;
+  color: var(--orange-web);
 }
 nav a {
   margin-right: 10px;

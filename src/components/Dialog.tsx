@@ -18,10 +18,17 @@ const DialogOption: React.FC<DialogOptionProps> = ({ option, onClick }) => {
 export const Dialog: React.FC = (props) => {
   const [dialog, setDialog] = useState<keyof typeof dialogTree>('1');
   const [dialogText, setDialogText] = useState<string>('');
+  const [active, setActive] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!active) {
+      return;
+    }
+
     const text = dialogTree[dialog].text;
 
+    const audio = new Audio('hamster.mp3');
+    audio.play();
     const interval = setInterval(() => {
       setDialogText((prev) => {
         if (prev === text) {
@@ -35,8 +42,13 @@ export const Dialog: React.FC = (props) => {
     return () => {
       clearInterval(interval);
       setDialogText('');
+      audio.pause();
     };
-  }, [dialog]);
+  }, [dialog, active]);
+
+  if (!active) {
+    return <button onClick={() => setActive(true)}>Talk to hamster</button>;
+  }
 
   const currentDialog = dialogTree[dialog];
   return (

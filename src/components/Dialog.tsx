@@ -1,6 +1,6 @@
 import '../styles/dialog.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { dialogTree } from '../constants';
 
 interface DialogOptionProps {
@@ -17,6 +17,26 @@ const DialogOption: React.FC<DialogOptionProps> = ({ option, onClick }) => {
 
 export const Dialog: React.FC = (props) => {
   const [dialog, setDialog] = useState<keyof typeof dialogTree>('1');
+  const [dialogText, setDialogText] = useState<string>('');
+
+  useEffect(() => {
+    const text = dialogTree[dialog].text;
+
+    const interval = setInterval(() => {
+      setDialogText((prev) => {
+        if (prev === text) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + text[prev.length];
+      });
+    }, 50);
+
+    return () => {
+      clearInterval(interval);
+      setDialogText('');
+    };
+  }, [dialog]);
 
   const currentDialog = dialogTree[dialog];
   return (
@@ -27,7 +47,7 @@ export const Dialog: React.FC = (props) => {
         alt="placeholder"
       />
       <div className="dialog__text">
-        <p>{currentDialog.text}</p>
+        <p>{dialogText}_</p>
         {currentDialog.options.map((option) => (
           <DialogOption
             key={option.text}

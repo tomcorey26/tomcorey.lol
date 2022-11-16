@@ -20,20 +20,26 @@
 }
 
 .dialog__img {
+  border-radius: 8px;
+  width: max(5%, 150px);
 }
 
 .dialog__text {
+  font-size: 2rem;
   width: 80%;
   height: 80%;
+  overflow-y: auto;
 }
 
-.dialog__text {
-  /* animate the words being typed in */
-  overflow: hidden;
-  white-space: nowrap;
-}
 .dialog__text p {
   padding: 0 1rem;
+}
+
+.dialog__option {
+  display: block;
+  width: 100%;
+  height: 20%;
+  margin: 1% 0;
 }
 
 @keyframes slide-in {

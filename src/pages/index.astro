@@ -5,6 +5,68 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import { Dialog } from '../components/Dialog';
 import { ParticleBackground } from '../components/ParticleBackground';
+import { Card } from '../components/Card';
+
+interface JobExperience {
+  title: string;
+  company: string;
+  startDate: Date;
+  endDate: Date;
+  points: string[];
+  skills: string[];
+}
+const jobs: JobExperience[] = [
+  {
+    title: 'Software Engineer',
+    company: 'Starry Inc.',
+    startDate: new Date('2022-04-01'),
+    endDate: new Date('2022-10-25'),
+    points: [
+      `Built an up-sell page in a customer facing UI that is critical to 
+      the business (Starry's internet signup flow) that resulted 
+      in a 15% take-rate for the up-sell`,
+
+      `Designed, developed, and tested a new customer account portal, used
+      to promote up-sells and allow them to manage their internet
+      subscription`,
+
+      `Built an up-sell page in a customer facing UI that is
+      critical to the business (Starry's internet signup flow) that
+      resulted in a 15% take-rate for the up-sell • Designed, developed,
+      and tested a new customer account portal, used to promote up-sells
+      and allow them to manage their internet subscription`,
+    ],
+    skills: ['Vue', 'JavaScript', 'Node.js', 'MongoDB', 'SCSS'],
+  },
+  {
+    title: 'Front End Software Engineer',
+    company: 'DealerOn',
+    startDate: new Date('2020-012-024'),
+    endDate: new Date('2022-03-31'),
+    points: [
+      "Lead UI development for team's projects",
+
+      `Built an internal app used by employees to customize how vehicle 
+      pricing was shown on dealer's (our customers) websites, 
+      to help them meet their compliance/marketing needs`,
+
+      `Maintained UI used for congregating and managing 
+      the inventory data of over 4000 car dealerships`,
+    ],
+    skills: ['Vue', 'TypeScript', 'SCSS', 'C#'],
+  },
+  {
+    title: 'Software Engineer',
+    company: 'CVS Health',
+    startDate: new Date('2020-10-01'),
+    endDate: new Date('2020-11-30'),
+    points: [
+      'Worked on a SAFe Agile team delivering solutions for the public CVS Health RESTful API',
+      'Utilized TypeScript, React, and Node to create a tool for the generation of API proxies on Google Cloud’s Apigee platform',
+    ],
+    skills: ['TypeScript', 'React', 'Node.js', 'SCSS'],
+  },
+];
 ---
 
 <!DOCTYPE html>
@@ -16,40 +78,73 @@ import { ParticleBackground } from '../components/ParticleBackground';
     <Header title={SITE_TITLE} />
 
     <main>
-      <img class="portrait" src="tom.jpeg" alt="Tom Corey" />
-      <h1>👊 Welcome, Bruther</h1>
-      <p>
-        Hey I'm Tom, a software engineer from Rhode Island. My expertise is in
-        web development with <strong>React, Vue, TypeScript, and Node.js</strong
-        >. I enjoy working with a variety of technologies and learning new
-        things.
-      </p>
-      <p>
-        Not to long ago, I was working as a full stack software engineer at
-        <a href="https://starry.com/" target="_blank">Starry</a>, a Boston-based
-        <a
-          href="https://en.wikipedia.org/wiki/Internet_service_provider"
-          target="_blank">internet service provider</a
-        >. I was responsible for adding features to our <a
-          href="https://order.starry.com/signup/59b811777bf2fb0a9213c3d9"
-          target="_blank">sign up flow</a
-        >, maintaining our internal admin dashboard, and building out a <a
-          href="https://account.starry.com/login"
-          target="_blank"
-        >
-          new customer portal.
-        </a>
-      </p>
-      <p>
-        Unfortunately, Starry started to struggle financially and was forced to
-        lay off 50% of their staff, including myself.
-        <strong>
-          I'm currently looking for a new job, so if you're hiring,
-          <a href="mailto:tombcorey@gmail.com" target="_blank"
-            >please reach out!</a
+      <Card className="introduction">
+        <img class="portrait" src="tom.jpeg" alt="Tom Corey" />
+        <h1>👊 Welcome, Bruther</h1>
+        <p>
+          Hey I'm Tom, a software engineer from Rhode Island. My expertise is in
+          web development with <strong
+            >React, Vue, TypeScript, and Node.js</strong
+          >. I enjoy working with a variety of technologies and learning new
+          things.
+        </p>
+        <p>
+          Not to long ago, I was working as a full stack software engineer at
+          <a href="https://starry.com/" target="_blank">Starry</a>, a
+          Boston-based
+          <a
+            href="https://en.wikipedia.org/wiki/Internet_service_provider"
+            target="_blank">internet service provider</a
+          >. I was responsible for adding features to our <a
+            href="https://order.starry.com/signup/59b811777bf2fb0a9213c3d9"
+            target="_blank">sign up flow</a
+          >, maintaining our internal admin dashboard, and building out a <a
+            href="https://account.starry.com/login"
+            target="_blank"
           >
-        </strong>
-      </p>
+            new customer portal.
+          </a>
+        </p>
+        <p>
+          Unfortunately, Starry started to struggle financially and was forced
+          to
+          <a
+            href="https://www.fiercewireless.com/wireless/starry-cuts-508-jobs-halts-new-builds"
+            target="_blankcore">lay off 50% of their staff</a
+          >, including myself.
+          <strong>
+            I'm currently looking for a new job, so if you're hiring,
+            <a href="mailto:tombcorey@gmail.com" target="_blank"
+              >please reach out!</a
+            >
+          </strong>
+        </p>
+      </Card>
+
+      {
+        jobs.map((job) => (
+          <Card>
+            <div class="job">
+              <h2>{job.title}</h2>
+              <h3>{job.company}</h3>
+              <p>
+                {job.startDate.toLocaleDateString()} -{' '}
+                {job.endDate.toLocaleDateString()}
+              </p>
+              <ul>
+                {job.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+              <ul>
+                {job.skills.map((skill) => (
+                  <li>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          </Card>
+        ))
+      }
     </main>
 
     <Dialog client:load />
@@ -59,12 +154,9 @@ import { ParticleBackground } from '../components/ParticleBackground';
     <Footer />
 
     <style>
-      main {
+      .introduction {
         text-align: center;
         background: var(--oxford-blue);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
       }
       .portrait {
         width: 40%;

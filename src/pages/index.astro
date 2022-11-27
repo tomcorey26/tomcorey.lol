@@ -6,20 +6,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import { Dialog } from '../components/Dialog';
 import { ParticleBackground } from '../components/ParticleBackground';
 import { Card } from '../components/Card';
+import JobExperience from '../components/JobExperience';
 
-interface JobExperience {
-  title: string;
-  company: string;
-  startDate: Date;
-  endDate: Date;
-  points: string[];
-  skills: string[];
-}
 const jobs: JobExperience[] = [
   {
     title: 'Software Engineer',
     company: 'Starry Inc.',
-    startDate: new Date('2022-04-01'),
+    emoji: '🌟',
+    startDate: new Date('2022-04-03'),
     endDate: new Date('2022-10-25'),
     points: [
       `Built an up-sell page in a customer facing UI that is critical to 
@@ -32,15 +26,14 @@ const jobs: JobExperience[] = [
 
       `Built an up-sell page in a customer facing UI that is
       critical to the business (Starry's internet signup flow) that
-      resulted in a 15% take-rate for the up-sell • Designed, developed,
-      and tested a new customer account portal, used to promote up-sells
-      and allow them to manage their internet subscription`,
+      resulted in a 15% take-rate for the up-sell`,
     ],
     skills: ['Vue', 'JavaScript', 'Node.js', 'MongoDB', 'SCSS'],
   },
   {
     title: 'Front End Software Engineer',
     company: 'DealerOn',
+    emoji: '🚗',
     startDate: new Date('2020-012-024'),
     endDate: new Date('2022-03-31'),
     points: [
@@ -53,11 +46,12 @@ const jobs: JobExperience[] = [
       `Maintained UI used for congregating and managing 
       the inventory data of over 4000 car dealerships`,
     ],
-    skills: ['Vue', 'TypeScript', 'SCSS', 'C#'],
+    skills: ['Vue', 'React', 'TypeScript', 'SCSS', 'C#'],
   },
   {
     title: 'Software Engineer',
     company: 'CVS Health',
+    emoji: '🏥',
     startDate: new Date('2020-10-01'),
     endDate: new Date('2020-11-30'),
     points: [
@@ -121,30 +115,7 @@ const jobs: JobExperience[] = [
         </p>
       </Card>
 
-      {
-        jobs.map((job) => (
-          <Card>
-            <div class="job">
-              <h2>{job.title}</h2>
-              <h3>{job.company}</h3>
-              <p>
-                {job.startDate.toLocaleDateString()} -{' '}
-                {job.endDate.toLocaleDateString()}
-              </p>
-              <ul>
-                {job.points.map((point) => (
-                  <li>{point}</li>
-                ))}
-              </ul>
-              <ul>
-                {job.skills.map((skill) => (
-                  <li>{skill}</li>
-                ))}
-              </ul>
-            </div>
-          </Card>
-        ))
-      }
+      {jobs.map((job) => <JobExperience {...job} />)}
     </main>
 
     <Dialog client:load />

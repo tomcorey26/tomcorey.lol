@@ -1,0 +1,26 @@
+.job {
+}
+
+.job__title {
+  margin-top: 0;
+}
+
+.job__company {
+}
+
+.job__points {
+  list-style: none;
+  padding: 0;
+}
+
+.job__points > li {
+  transition: all 0.2s;
+  margin: 1rem 0;
+  border-left: 4px solid var(--orange-web);
+  padding-left: 1rem;
+}
+
+.job__points > li:hover {
+  transform: scale(1.02) translateY(-0.1rem);
+  transition: all 0.2s;
+}

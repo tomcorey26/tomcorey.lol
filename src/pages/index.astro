@@ -135,6 +135,19 @@ const jobs: JobExperience[] = [
         display: block;
         margin: 0 auto;
       }
+
+      .portrait:hover {
+        animation: portrait-rotate 3s infinite linear;
+      }
+
+      @keyframes portrait-rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </body>
 </html>

@@ -1,4 +1,5 @@
 import { Card } from './Card';
+import { TechCell } from './TechCell';
 
 import '../styles/job-experience.css';
 
@@ -45,9 +46,8 @@ export default function JobExperience(job: Props) {
           ))}
         </ul>
         <ul className="job__skills">
-          {/* TODO add icons for each skill */}
-          {job.skills.map((skill) => (
-            <li>{skill}</li>
+          {job.skills.map((skill, i) => (
+            <TechCell key={skill + job.company} tech={skill} />
           ))}
         </ul>
       </div>

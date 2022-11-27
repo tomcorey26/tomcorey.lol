@@ -24,3 +24,11 @@
   transform: scale(1.02) translateY(-0.1rem);
   transition: all 0.2s;
 }
+
+.job__skills {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}

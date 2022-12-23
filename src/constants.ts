@@ -10,7 +10,7 @@ type DialogTree = { [key in DialogKey]: Dialog };
 
 export const dialogTree: DialogTree = {
   '1': {
-    text: 'fdskalfjlkdsa jfkldsjafk jdsakfjdsklajfklsdajfkl dsjalfjdsalfjdslajfkldsjafkljdsalfjdsalkjfksdajfkldsjaklfjdsal',
+    text: 'Hey Im some shitty unfinished dialog thing Tom made, but then got bored and never finished',
     options: [
       {
         text: 'Yes',

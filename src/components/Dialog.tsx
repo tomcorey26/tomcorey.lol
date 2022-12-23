@@ -1,7 +1,8 @@
 import '../styles/dialog.css';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { dialogTree } from '../constants';
+import { Card } from './Card';
 
 interface DialogOptionProps {
   option: { text: string; next: string };
@@ -21,32 +22,40 @@ const DialogOption: React.FC<DialogOptionProps> = ({ option, onClick }) => {
 // add googly eyes to my self portrait
 
 export const Dialog: React.FC = (props) => {
-  const [dialog, setDialog] = useState<keyof typeof dialogTree>('1');
   const [dialogText, setDialogText] = useState<string>('');
+
+  const [dialogKey, setDialogKey] = useState<keyof typeof dialogTree>('1');
   const [active, setActive] = useState<boolean>(false);
   const [isTalking, setIsTalking] = useState<boolean>(true);
+  const interval = useRef<NodeJS.Timeout>();
+  const audio = useRef<HTMLAudioElement>();
 
-  useEffect(() => {
-    if (!active) {
-      return;
-    }
+  const init = () => {
+    setActive(true);
+    talk('1');
+  };
 
-    const text = dialogTree[dialog].text;
+  const talk = (dialogKey: keyof typeof dialogTree) => {
+    setIsTalking(true);
+    setDialogText('');
+    setDialogKey(dialogKey);
+
+    const text = dialogTree[dialogKey].text;
 
     // generate random number 1 - 5
     const random = () => Math.floor(Math.random() * 5) + 1;
-    let audio = new Audio(`hamster${random()}.mp3`);
-    audio.play();
+    audio.current = new Audio(`hamster${random()}.mp3`);
+    audio.current.play();
 
-    const interval = setInterval(() => {
-      if (audio.ended) {
-        audio = new Audio(`hamster${random()}.mp3`);
-        audio.play();
+    interval.current = setInterval(() => {
+      if (audio.current?.ended) {
+        audio.current = new Audio(`hamster${random()}.mp3`);
+        audio.current.play();
       }
 
       setDialogText((prev) => {
         if (prev === text) {
-          clearInterval(interval);
+          clearInterval(interval.current);
           setTimeout(() => setIsTalking(false), 2000);
 
           return prev;
@@ -54,26 +63,31 @@ export const Dialog: React.FC = (props) => {
         return prev + text[prev.length];
       });
     }, 50);
+  };
 
-    return () => {
-      clearInterval(interval);
-      setDialogText('');
-      audio.pause();
-    };
-  }, [dialog, active]);
+  const closeDialog = () => {
+    clearInterval(interval.current);
+    setDialogText('');
+    audio.current?.pause();
+    interval.current = undefined;
+    audio.current = undefined;
 
-  const startTalking = (dialogNum: keyof typeof dialogTree) => {
-    setDialog(dialogNum);
-    setIsTalking(true);
+    setActive(false);
+    setIsTalking(false);
+    setDialogText('');
+    setDialogKey('1');
   };
 
   if (!active) {
-    return <button onClick={() => setActive(true)}>Talk to hamster</button>;
+    return <button onClick={init}>Talk to hamster</button>;
   }
 
-  const currentDialog = dialogTree[dialog];
+  const currentDialog = dialogTree[dialogKey];
   return (
-    <div className="dialog">
+    <Card className="dialog">
+      <div>
+        <button onClick={closeDialog}>X</button>
+      </div>
       <img
         className="dialog__img"
         src="facetime-hamster.jpeg"
@@ -87,11 +101,11 @@ export const Dialog: React.FC = (props) => {
             <DialogOption
               key={option.text}
               option={option}
-              onClick={() => startTalking(option.next)}
+              onClick={() => talk(option.next)}
             />
           ))
         )}
       </div>
-    </div>
+    </Card>
   );
 };

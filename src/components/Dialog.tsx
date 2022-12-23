@@ -91,7 +91,7 @@ export const Dialog: React.FC = (props) => {
       <img
         className="dialog__img"
         src="facetime-hamster.jpeg"
-        alt="placeholder"
+        alt="FaceTime hamster"
       />
       <div className="dialog__text">
         {isTalking ? (

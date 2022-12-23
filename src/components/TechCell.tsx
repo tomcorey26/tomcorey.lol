@@ -22,7 +22,7 @@ export const TechCell = ({ tech }: Props) => {
   return (
     <Card tag="li" className="cell">
       <div className="cell__img-container">
-        <img src={urlMap[tech]} className="css-eei33z" />
+        <img src={urlMap[tech]} className="css-eei33z" alt={`${tech} icon`} />
       </div>
       <div className="cell__language">{tech}</div>
     </Card>

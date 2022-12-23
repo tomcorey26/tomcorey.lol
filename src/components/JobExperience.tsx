@@ -30,7 +30,6 @@ export default function JobExperience(job: Props) {
   return (
     <Card>
       <div className="job">
-        <img src="" alt="" />
         <h2 className="job__title">{job.title}</h2>
         <h3 className="job__company">
           {job.emoji} {job.company}

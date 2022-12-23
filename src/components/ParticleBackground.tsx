@@ -1,32 +1,21 @@
 import { useCallback } from 'react';
-import type { Container, Engine } from 'tsparticles-engine';
-import Particles from 'react-particles';
-import { loadFull } from 'tsparticles';
-
-// TODO - only load in the particle js bundles we need
+import { Particles } from 'react-particles';
+import { loadLinksPreset } from 'tsparticles-preset-links';
 
 export const ParticleBackground = () => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    console.log(engine);
-
-    // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
-    await loadFull(engine);
+  const particlesInit = useCallback(async (engine) => {
+    await loadLinksPreset(engine);
   }, []);
 
-  const particlesLoaded = useCallback(
-    async (container: Container | undefined) => {},
-    []
-  );
   return (
     <Particles
       width="500px"
       height="500px"
       id="tsparticles"
       init={particlesInit}
-      loaded={particlesLoaded}
       options={{
+        preset: 'links',
+
         fullScreen: { enable: true, zIndex: -1 },
 
         background: {

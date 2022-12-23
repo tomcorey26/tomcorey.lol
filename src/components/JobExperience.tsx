@@ -40,7 +40,7 @@ export default function JobExperience(job: Props) {
         </i>
         <ul className="job__points">
           {job.points.map((point) => (
-            <li>
+            <li key={point}>
               <p>{point}</p>
             </li>
           ))}

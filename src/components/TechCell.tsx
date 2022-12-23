@@ -14,6 +14,8 @@ const urlMap: Record<TechSkill, string> = {
   MongoDB: 'https://img.stackshare.io/service/1030/leaf-360x360.png',
   Sass: 'https://img.stackshare.io/service/1171/jCR2zNJV.png',
   'C#': 'https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png',
+  PHP: 'https://img.stackshare.io/service/991/hwUcGZ41_400x400.jpg',
+  PostgreSQL: 'https://img.stackshare.io/service/1028/ASOhU5xJ.png',
 };
 
 export const TechCell = ({ tech }: Props) => {

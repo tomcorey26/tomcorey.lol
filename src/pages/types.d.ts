@@ -16,4 +16,6 @@ type TechSkill =
   | 'Node.js'
   | 'MongoDB'
   | 'Sass'
-  | 'C#';
+  | 'C#'
+  | 'PHP'
+  | 'PostgreSQL';

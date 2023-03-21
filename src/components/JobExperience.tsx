@@ -35,7 +35,8 @@ export default function JobExperience(job: Props) {
           {job.emoji} {job.company}
         </h3>
         <i>
-          {formatDate(job.startDate)} - {formatDate(job.endDate)}
+          {formatDate(job.startDate)} -{' '}
+          {job.endDate ? formatDate(job.endDate) : 'Present'}
         </i>
         <ul className="job__points">
           {job.points.map((point) => (

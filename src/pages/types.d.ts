@@ -3,7 +3,7 @@ interface JobExperience {
   company: string;
   emoji: string;
   startDate: Date;
-  endDate: Date;
+  endDate?: Date;
   points: string[];
   skills: TechSkill[];
 }

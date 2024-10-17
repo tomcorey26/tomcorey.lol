@@ -7,7 +7,7 @@ export const ParticleBackground = () => {
     await loadLinksPreset(engine);
   }, []);
 
-  const backgroundColor = '#3A5A40';
+  const backgroundColor = '#14213dff';
   const particleColor = '#fff';
 
   return (

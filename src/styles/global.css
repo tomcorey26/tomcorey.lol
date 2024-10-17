@@ -8,8 +8,8 @@
 /* https://coolors.co/palette/000000-14213d-fca311-e5e5e5-ffffff */
 :root {
   --black: #000000ff;
-  --oxford-blue: #14213dff;
-  --orange-web: #fca311ff;
+  --primary-color: #588157;
+  --orange-web: #f564a9;
   --platinum: #e5e5e5ff;
   --white: #ffffffff;
 }
@@ -39,7 +39,7 @@ body {
 }
 
 body {
-  background-color: var(--oxford-blue);
+  background-color: var(--primary-color);
   font-family: 'Montserrat Alternates', sans-serif;
   margin: auto;
   padding: 20px;

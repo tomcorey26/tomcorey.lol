@@ -7,6 +7,9 @@ export const ParticleBackground = () => {
     await loadLinksPreset(engine);
   }, []);
 
+  const backgroundColor = '#3A5A40';
+  const particleColor = '#fff';
+
   return (
     <Particles
       width="500px"
@@ -20,16 +23,16 @@ export const ParticleBackground = () => {
 
         background: {
           color: {
-            value: '#14213D',
+            value: backgroundColor,
           },
         },
 
         particles: {
           color: {
-            value: '#fff',
+            value: particleColor,
           },
           links: {
-            color: '#fca311ff',
+            color: particleColor,
             distance: 180,
             enable: true,
             opacity: 0.5,

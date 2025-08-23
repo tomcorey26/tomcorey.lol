@@ -14,11 +14,12 @@ const urlMap: Record<TechSkill, string> = {
   MongoDB: "https://img.stackshare.io/service/1030/leaf-360x360.png",
   Sass: "https://img.stackshare.io/service/1171/jCR2zNJV.png",
   "C#": "https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png",
-  ".NET": "https://img.stackshare.io/service/1042/NET_Core_Logo.png",
-  Azure: "https://img.stackshare.io/service/1686/azure.png",
-  Elasticsearch: "https://img.stackshare.io/service/1021/Elasticsearch.png",
-  RabbitMQ: "https://img.stackshare.io/service/1041/rabbitmq.png",
-  Microservices: "https://img.stackshare.io/service/4207/architecture.png",
+  ".NET": "https://img.stackshare.io/service/1014/IoPy1dce_400x400.png",
+  Azure: "https://img.stackshare.io/service/4313/XNKktHjN_400x400.png",
+  Elasticsearch:
+    "https://img.stackshare.io/service/841/Image_2019-05-20_at_4.58.04_PM.png",
+  RabbitMQ:
+    "https://img.stackshare.io/service/1061/default_df93e9a30d27519161b39d8c1d5c223c1642d187.jpg",
   PHP: "https://img.stackshare.io/service/991/hwUcGZ41_400x400.jpg",
   PostgreSQL: "https://img.stackshare.io/service/1028/ASOhU5xJ.png",
 };

@@ -22,6 +22,5 @@ type TechSkill =
   | "Azure"
   | "Elasticsearch"
   | "RabbitMQ"
-  | "Microservices"
   | "PHP"
   | "PostgreSQL";

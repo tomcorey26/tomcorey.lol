@@ -41,28 +41,27 @@ export const Dialog: React.FC = (props) => {
     setDialogKey(dialogKey);
 
     const text = dialogTree[dialogKey].text;
+    let charIndex = 0;
 
     // generate random number 1 - 5
     const random = () => Math.floor(Math.random() * 5) + 1;
-    audio.current = new Audio(`hamster${random()}.mp3`);
-    audio.current.play();
 
     interval.current = setInterval(() => {
-      if (audio.current?.ended) {
-        audio.current = new Audio(`hamster${random()}.mp3`);
-        audio.current.play();
-      }
-
-      setDialogText((prev) => {
-        if (prev === text) {
-          clearInterval(interval.current);
-          setTimeout(() => setIsTalking(false), 2000);
-
-          return prev;
+      if (charIndex < text.length) {
+        // Play sound for each character (but not for spaces)
+        if (text[charIndex] !== ' ') {
+          audio.current = new Audio(`hamster${random()}.mp3`);
+          audio.current.volume = 0.3; // Lower volume for better experience
+          audio.current.play().catch(() => {}); // Ignore audio errors
         }
-        return prev + text[prev.length];
-      });
-    }, 50);
+
+        setDialogText(text.substring(0, charIndex + 1));
+        charIndex++;
+      } else {
+        clearInterval(interval.current);
+        setTimeout(() => setIsTalking(false), 1000);
+      }
+    }, 35); // Faster typing speed for better UX
   };
 
   const closeDialog = () => {
@@ -79,15 +78,13 @@ export const Dialog: React.FC = (props) => {
   };
 
   if (!active) {
-    return <button onClick={init}>Talk to hamster</button>;
+    return <button className="hamster-button" onClick={init}>🐹 Talk to hamster</button>;
   }
 
   const currentDialog = dialogTree[dialogKey];
   return (
     <Card className="dialog">
-      <div>
-        <button onClick={closeDialog}>X</button>
-      </div>
+      <button className="dialog__close" onClick={closeDialog}>✕</button>
       <img
         className="dialog__img"
         src="facetime-hamster.jpeg"

@@ -1,75 +1,69 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
-import { Dialog } from '../components/Dialog';
-import { ParticleBackground } from '../components/ParticleBackground';
-import { Card } from '../components/Card';
-import JobExperience from '../components/JobExperience';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import { Dialog } from "../components/Dialog";
+import { Card } from "../components/Card";
+import JobExperience from "../components/JobExperience";
 
 const jobs: JobExperience[] = [
-  // {
-  //   title: 'Software Engineer',
-  //   company: 'Starry Inc.',
-  //   emoji: '🌟',
-  //   startDate: new Date('2022-04-03'),
-  //   endDate: new Date('2022-10-25'),
-  //   points: [
-  //     `Built an up-sell page in a customer facing UI that is critical to
-  //     the business (Starry's internet signup flow) that resulted
-  //     in a 15% take-rate for the up-sell`,
-
-  //     `Designed, developed, and tested a new customer account portal, used
-  //     to promote up-sells and allow them to manage their internet
-  //     subscription`,
-
-  //     `Built an up-sell page in a customer facing UI that is
-  //     critical to the business (Starry's internet signup flow) that
-  //     resulted in a 15% take-rate for the up-sell`,
-  //   ],
-  //   skills: ['Vue', 'JavaScript', 'Node.js', 'MongoDB', 'Sass'],
-  // },
   {
-    title: 'Front End Software Engineer',
-    company: 'DealerOn',
-    emoji: '🚗',
-    startDate: new Date('2020-012-024'),
+    title: "Software Engineer",
+    company: "DealerOn",
+    emoji: "🚗",
+    logo: "https://media.licdn.com/dms/image/v2/D4E0BAQE0rro_noAHwA/company-logo_100_100/B4EZeyBk_QG4AU-/0/1751038448044/dealeron_inc_logo?e=1758758400&v=beta&t=9DLVRNbAbHuJisAREn8yCxqV8-2CNqpiRNASLBgkXjU",
+    startDate: new Date("2023-01-01"),
     points: [
-      "Leads UI development for inventory team's projects",
+      `Lead UI development for the inventory team and develop full-stack solutions within a cross-functional agile environment`,
 
-      `Built an internal app used by employees to customize how vehicle 
-      pricing was shown on dealer's (our customers) websites, 
-      to help them meet their compliance/marketing needs`,
+      `Build frontend applications using React, Vue, and TypeScript, alongside backend systems in .NET/C#/Azure, serving 7,000+ automotive dealerships through a high-traffic web platform that processes millions of requests hourly`,
 
-      `Maintains UI used for congregating and managing 
-      the inventory data of over 4000 car dealerships`,
+      `Redesigned and rebuilt a customer-facing vehicle pricing configuration system using Vue.js and .NET APIs, resulting in a 20% reduction in pricing-related support tickets through enhanced UI validation and automated workflows`,
+
+      `Maintain and enhance a robust inventory management platform featuring RabbitMQ-based microservices that consume data from major OEM vendors (Ford, Toyota, GM, and others), processing over 200,000 daily inventory updates`,
+
+      `Developed a comprehensive export data UI system with seamless integration across 15+ third-party automotive platforms, including CarFax, Google Vehicle Ads, and various OEM-specific inventory feeds`,
     ],
-    skills: ['React', 'Vue', 'TypeScript', 'C#', 'Sass'],
+    skills: [
+      "React",
+      "Vue",
+      "TypeScript",
+      ".NET",
+      "C#",
+      "Azure",
+      "Elasticsearch",
+      "RabbitMQ",
+      "Microservices",
+    ],
   },
   {
-    title: 'Software Engineer',
-    company: 'CVS Health',
-    emoji: '🏥',
-    startDate: new Date('2020-10-01'),
-    endDate: new Date('2020-11-30'),
+    title: "Software Engineer",
+    company: "CVS Health",
+    emoji: "🏥",
+    logo: "https://media.licdn.com/dms/image/v2/C4E0BAQEhOw_KVli-CQ/company-logo_100_100/company-logo_100_100/0/1669901807779/cvs_health_logo?e=1758758400&v=beta&t=igAalYXweOJbVvykHVkz6Bzb6srgc3mZBFKl-F1ww6M",
+    startDate: new Date("2020-10-01"),
+    endDate: new Date("2020-12-01"),
     points: [
-      'Worked on a SAFe Agile team delivering solutions for the public CVS Health RESTful API',
-      'Utilized TypeScript, React, and Node to create a tool for the generation of API proxies on Google Cloud’s Apigee platform',
+      "Worked on a SAFe Agile team delivering solutions for the public CVS Health RESTful API",
+
+      "Utilized TypeScript, React, and Node to create a tool for the generation of API proxies on Google Cloud's Apigee platform",
     ],
-    skills: ['TypeScript', 'React', 'Node.js', 'Sass'],
+    skills: ["TypeScript", "React", "Node.js"],
   },
   {
-    title: 'Software Engineer',
-    company: 'Maverick Investment Tech',
-    emoji: '📈',
-    startDate: new Date('2020-1-01'),
-    endDate: new Date('2020-10-20'),
+    title: "Full Stack Software Engineer",
+    company: "Maverick Investment Tech",
+    emoji: "📈",
+    logo: "https://media.licdn.com/dms/image/v2/C4D0BAQET0W6apKlh9Q/company-logo_100_100/company-logo_100_100/0/1630521649519/maverick_investment_tech_logo?e=1758758400&v=beta&t=5w8-3djs2yQDjORC_e8QEuiLaiLLdDMqMLPwVN7Ebx0",
+    startDate: new Date("2020-01-01"),
+    endDate: new Date("2020-10-01"),
     points: [
-      'Worked on an interactive tool to retrieve and visualize stock data for financial analysis using React',
-      'Created parts of a PHP RESTful API to import external stock information from a PostgreSQL datastore',
+      "Worked on an interactive tool to retrieve and visualize stock data for financial analysis using React",
+
+      "Developed a PHP RESTful API to import external stock information from a PostgreSQL datastore",
     ],
-    skills: ['JavaScript', 'React', 'PHP', 'PostgreSQL'],
+    skills: ["JavaScript", "React", "PHP", "PostgreSQL"],
   },
 ];
 ---
@@ -84,17 +78,13 @@ const jobs: JobExperience[] = [
 
     <main>
       <Card className="introduction">
-        <img class="portrait" src="tom.jpeg" alt="Tom Corey" />
+        <img class="portrait" src="tom.jpg" alt="Tom Corey" />
         <p>
-          Hey I'm Tom, a software engineer from Rhode Island. My expertise is in
-          web development with <strong
-            >React, Vue, TypeScript, and Node.js</strong
-          >. I enjoy working with a variety of technologies and learning new
-          things.
+          Hey I'm Tom, a full-stack software engineer from Rhode Island specializing in <strong>React, Vue, TypeScript, Node.js, and .NET</strong>. I have extensive experience building enterprise-scale applications in cross-functional agile environments, delivering high-performance solutions that serve thousands of users and process millions of requests.
           <strong>
             I'm currently looking for a new job, so if you're hiring,
-            <a href="mailto:tombcorey@gmail.com" target="_blank"
-              >please reach out!</a
+            <a href="mailto:tombcorey@gmail.com" target="_blank" class="cta-link"
+              >📧 please reach out!</a
             >
           </strong>
         </p>
@@ -105,32 +95,199 @@ const jobs: JobExperience[] = [
 
     <Dialog client:load />
 
-    <ParticleBackground client:load />
-
     <Footer />
 
     <style>
       .introduction {
         text-align: center;
-        background: var(--primary-color);
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.05),
+          rgba(129, 140, 248, 0.02)
+        );
+        position: relative;
+        overflow: visible;
+        --card-delay: 100ms;
       }
+
       .portrait {
-        width: 40%;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto 1.5rem;
+        position: relative;
+        z-index: 2;
+        border: 3px solid transparent;
+        background: linear-gradient(var(--primary), var(--primary)) padding-box,
+          linear-gradient(135deg, var(--accent), var(--accent-light)) border-box;
+        transition: all var(--transition-spring);
+        animation: portraitEntry 1s var(--transition-spring) forwards;
+        box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+        object-fit: cover;
+        object-position: center 80%;
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+      }
+
+      @keyframes portraitEntry {
+        0% {
+          opacity: 0;
+          transform: scale(0.8) translateY(20px);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(0.9) translateY(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
       }
 
       .portrait:hover {
-        animation: portrait-rotate 3s infinite linear;
+        transform: scale(1.05) rotate(5deg);
+        box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4),
+          0 0 80px rgba(129, 140, 248, 0.3);
+        border-width: 4px;
       }
 
-      @keyframes portrait-rotate {
-        0% {
-          transform: rotate(0deg);
-        }
+      .portrait:hover::after {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          transparent 30%,
+          var(--accent-glow) 70%
+        );
+        animation: portraitPulse 2s ease-in-out infinite;
+        z-index: -1;
+      }
+
+      @keyframes portraitPulse {
+        0%,
         100% {
-          transform: rotate(360deg);
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.2);
+        }
+      }
+
+      .introduction p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        animation: textFade 1s ease-out 0.3s both;
+      }
+
+      @keyframes textFade {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .introduction strong {
+        color: var(--accent-light);
+        font-weight: 600;
+        position: relative;
+      }
+
+      .introduction a {
+        display: inline-block;
+        position: relative;
+        color: var(--accent-light);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all var(--transition-base);
+      }
+
+      .introduction a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--gradient-accent);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform var(--transition-base);
+      }
+
+      .introduction a:hover {
+        color: var(--text-primary);
+        transform: translateY(-2px);
+        text-shadow: 0 0 20px var(--accent-glow);
+      }
+
+      .introduction a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .cta-link {
+        background: var(--gradient-accent) !important;
+        color: white !important;
+        padding: 0.5rem 1rem !important;
+        border-radius: 8px !important;
+        font-weight: 700 !important;
+        text-shadow: none !important;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        transition: all var(--transition-base) !important;
+        margin-left: 0.5rem;
+        white-space: nowrap;
+      }
+
+      .cta-link::after {
+        display: none !important;
+      }
+
+      .cta-link:hover {
+        transform: translateY(-2px) scale(1.05) !important;
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4) !important;
+        color: white !important;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5) !important;
+      }
+
+      main > * {
+        --card-delay: calc(var(--card-index, 0) * 150ms);
+      }
+
+      main > :nth-child(1) {
+        --card-index: 0;
+      }
+      main > :nth-child(2) {
+        --card-index: 1;
+      }
+      main > :nth-child(3) {
+        --card-index: 2;
+      }
+      main > :nth-child(4) {
+        --card-index: 3;
+      }
+
+      @media (max-width: 768px) {
+        .portrait {
+          width: 150px;
+          height: 150px;
+        }
+
+        .introduction p {
+          font-size: 1rem;
+          padding: 0 1rem;
         }
       }
     </style>

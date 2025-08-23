@@ -4,28 +4,116 @@ import { SITE_TITLE } from '../config';
 ---
 
 <header>
-  <h2>
-    {SITE_TITLE}
-  </h2>
-  <nav>
-    <HeaderLink href="/">Home</HeaderLink>
-    <HeaderLink href="/blog">Blog</HeaderLink>
-    <HeaderLink href="/about">About</HeaderLink>
+  <div class="header-container">
+    <h2>
+      {SITE_TITLE}
+    </h2>
+    <nav>
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
 
-    <HeaderLink
-      href="https://www.linkedin.com/in/tom-corey-499419170/"
-      target="_blank">Linkedin</HeaderLink
-    >
-    <HeaderLink href="https://github.com/tomcorey26" target="_blank"
-      >GitHub</HeaderLink
-    >
-  </nav>
+      <HeaderLink
+        href="https://www.linkedin.com/in/tom-corey-499419170/"
+        target="_blank">Linkedin</HeaderLink
+      >
+      <HeaderLink href="https://github.com/tomcorey26" target="_blank"
+        >GitHub</HeaderLink
+      >
+    </nav>
+  </div>
 </header>
 <style>
   header {
-    margin: 0em 0 2em;
+    margin: 0 0 1.5rem;
+    padding: 2rem 0;
+    position: relative;
+    animation: headerSlide 0.8s ease-out;
   }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+
+  @keyframes headerSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .header-container::after {
+    content: '';
+    position: absolute;
+    bottom: -2rem;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-glow),
+      var(--accent),
+      var(--accent-glow),
+      transparent
+    );
+    opacity: 0.5;
+    animation: lineGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes lineGlow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scaleX(0.8);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scaleX(1);
+    }
+  }
+
   h2 {
-    margin: 0.5em 0;
+    margin: 0 0 1rem 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+    animation: titleGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes titleGlow {
+    0%, 100% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(1.2);
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 0 1rem;
+    }
+
+    .header-container::after {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 </style>

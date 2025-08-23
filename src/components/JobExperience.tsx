@@ -31,23 +31,30 @@ export default function JobExperience(job: Props) {
     <Card>
       <div className="job">
         <h2 className="job__title">{job.title}</h2>
-        <h3 className="job__company">
-          {job.emoji} {job.company}
-        </h3>
+        <div className="job__company">
+          {job.logo ? (
+            <img src={job.logo} alt={`${job.company} logo`} className="job__logo" />
+          ) : (
+            <span className="job__emoji">{job.emoji}</span>
+          )}
+          <h3>{job.company}</h3>
+        </div>
         <i>
           {formatDate(job.startDate)} -{' '}
           {job.endDate ? formatDate(job.endDate) : 'Present'}
         </i>
         <ul className="job__points">
-          {job.points.map((point) => (
-            <li key={point}>
+          {job.points.map((point, index) => (
+            <li key={point} style={{ '--point-index': index } as React.CSSProperties}>
               <p>{point}</p>
             </li>
           ))}
         </ul>
         <ul className="job__skills">
           {job.skills.map((skill, i) => (
-            <TechCell key={skill + job.company} tech={skill} />
+            <li key={skill + job.company} style={{ '--tech-index': i } as React.CSSProperties}>
+              <TechCell tech={skill} />
+            </li>
           ))}
         </ul>
       </div>

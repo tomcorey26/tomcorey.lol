@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "verbatimModuleSyntax": true // or false, depending on your needs
+    "verbatimModuleSyntax": true, // or false, depending on your needs
+    "jsx": "react-jsx"
   }
 }

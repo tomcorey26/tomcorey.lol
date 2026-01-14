@@ -1,6 +1,7 @@
 interface JobExperience {
   title: string;
   company: string;
+  companyUrl: string;
   emoji: string;
   logo?: string;
   startDate: Date;

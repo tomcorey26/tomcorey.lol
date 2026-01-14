@@ -1,24 +1,24 @@
-import { Card } from './Card';
-import { TechCell } from './TechCell';
+import { Card } from "./Card";
+import { TechCell } from "./TechCell";
 
-import '../styles/job-experience.css';
+import "../styles/job-experience.css";
 
 type Props = JobExperience;
 
 const getMonthName = (month: number) => {
   const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   return monthNames[month];
 };
@@ -32,27 +32,30 @@ export default function JobExperience(job: Props) {
       <div className="job">
         <h2 className="job__title">{job.title}</h2>
         <div className="job__company">
-          {job.logo ? (
-            <img src={job.logo} alt={`${job.company} logo`} className="job__logo" />
-          ) : (
-            <span className="job__emoji">{job.emoji}</span>
-          )}
-          <h3>{job.company}</h3>
+          <a href={job.companyUrl} target="_blank" rel="noopener noreferrer">
+            <h3>{job.company}</h3>
+          </a>
         </div>
         <i>
-          {formatDate(job.startDate)} -{' '}
-          {job.endDate ? formatDate(job.endDate) : 'Present'}
+          {formatDate(job.startDate)} -{" "}
+          {job.endDate ? formatDate(job.endDate) : "Present"}
         </i>
         <ul className="job__points">
           {job.points.map((point, index) => (
-            <li key={point} style={{ '--point-index': index } as React.CSSProperties}>
+            <li
+              key={point}
+              style={{ "--point-index": index } as React.CSSProperties}
+            >
               <p>{point}</p>
             </li>
           ))}
         </ul>
         <ul className="job__skills">
           {job.skills.map((skill, i) => (
-            <li key={skill + job.company} style={{ '--tech-index': i } as React.CSSProperties}>
+            <li
+              key={skill + job.company}
+              style={{ "--tech-index": i } as React.CSSProperties}
+            >
               <TechCell tech={skill} />
             </li>
           ))}

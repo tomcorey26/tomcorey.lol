@@ -27,8 +27,6 @@ import { SITE_TITLE } from '../config';
   header {
     margin: 0 0 1.5rem;
     padding: 2rem 0;
-    position: relative;
-    animation: headerSlide 0.8s ease-out;
   }
 
   .header-container {
@@ -38,17 +36,6 @@ import { SITE_TITLE } from '../config';
     position: relative;
   }
 
-  @keyframes headerSlide {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   .header-container::after {
     content: '';
     position: absolute;
@@ -56,48 +43,16 @@ import { SITE_TITLE } from '../config';
     left: 2rem;
     right: 2rem;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--accent-glow),
-      var(--accent),
-      var(--accent-glow),
-      transparent
-    );
-    opacity: 0.5;
-    animation: lineGlow 3s ease-in-out infinite;
-  }
-
-  @keyframes lineGlow {
-    0%, 100% {
-      opacity: 0.3;
-      transform: scaleX(0.8);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scaleX(1);
-    }
+    background: var(--accent);
+    opacity: 0.3;
   }
 
   h2 {
     margin: 0 0 1rem 0;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-light);
     letter-spacing: -0.5px;
-    animation: titleGlow 2s ease-in-out infinite;
-  }
-
-  @keyframes titleGlow {
-    0%, 100% {
-      filter: brightness(1);
-    }
-    50% {
-      filter: brightness(1.2);
-    }
   }
 
   nav {

@@ -11,9 +11,10 @@ const jobs: JobExperience[] = [
   {
     title: "Software Engineer",
     company: "DealerOn",
+    companyUrl: "https://www.dealeron.com/",
     emoji: "🚗",
     logo: "https://media.licdn.com/dms/image/v2/D4E0BAQE0rro_noAHwA/company-logo_100_100/B4EZeyBk_QG4AU-/0/1751038448044/dealeron_inc_logo?e=1758758400&v=beta&t=9DLVRNbAbHuJisAREn8yCxqV8-2CNqpiRNASLBgkXjU",
-    startDate: new Date("2023-01-01"),
+    startDate: new Date("2020-01-01"),
     points: [
       `Lead UI development for the inventory team and develop full-stack solutions within a cross-functional agile environment`,
 
@@ -39,6 +40,7 @@ const jobs: JobExperience[] = [
   {
     title: "Software Engineer",
     company: "CVS Health",
+    companyUrl: "https://www.cvshealth.com/",
     emoji: "🏥",
     logo: "https://media.licdn.com/dms/image/v2/C4E0BAQEhOw_KVli-CQ/company-logo_100_100/company-logo_100_100/0/1669901807779/cvs_health_logo?e=1758758400&v=beta&t=igAalYXweOJbVvykHVkz6Bzb6srgc3mZBFKl-F1ww6M",
     startDate: new Date("2020-10-01"),
@@ -53,6 +55,7 @@ const jobs: JobExperience[] = [
   {
     title: "Full Stack Software Engineer",
     company: "Maverick Investment Tech",
+    companyUrl: "https://www.linkedin.com/company/maverick-investment-tech/",
     emoji: "📈",
     logo: "https://media.licdn.com/dms/image/v2/C4D0BAQET0W6apKlh9Q/company-logo_100_100/company-logo_100_100/0/1630521649519/maverick_investment_tech_logo?e=1758758400&v=beta&t=5w8-3djs2yQDjORC_e8QEuiLaiLLdDMqMLPwVN7Ebx0",
     startDate: new Date("2020-01-01"),
@@ -91,100 +94,34 @@ const jobs: JobExperience[] = [
             <a
               href="mailto:tombcorey@gmail.com"
               target="_blank"
-              class="cta-link">📧 please reach out!</a
+              class="cta-link">Please reach out!</a
             >
+            <a href="#experience" class="cta-link secondary" id="view-experience-btn">View Experience</a>
           </strong>
         </p>
       </Card>
 
-      {jobs.map((job) => <JobExperience {...job} />)}
+      <section id="experience">
+        {jobs.map((job) => <JobExperience {...job} />)}
+      </section>
     </main>
-
-    <div class="hamster-section">
-      <Dialog client:load />
-    </div>
 
     <Footer />
 
     <style>
       .introduction {
         text-align: center;
-        background: linear-gradient(
-          135deg,
-          rgba(99, 102, 241, 0.05),
-          rgba(129, 140, 248, 0.02)
-        );
-        position: relative;
-        overflow: visible;
-        --card-delay: 100ms;
       }
 
       .portrait {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
         display: block;
         margin: 0 auto 1.5rem;
-        position: relative;
-        z-index: 2;
-        border: 3px solid transparent;
-        background: linear-gradient(var(--primary), var(--primary)) padding-box,
-          linear-gradient(135deg, var(--accent), var(--accent-light)) border-box;
-        transition: all var(--transition-spring);
-        animation: portraitEntry 1s var(--transition-spring) forwards;
-        box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+        border: 3px solid var(--accent);
         object-fit: cover;
         object-position: center 80%;
-        opacity: 0;
-        transform: scale(0.8) translateY(20px);
-      }
-
-      @keyframes portraitEntry {
-        0% {
-          opacity: 0;
-          transform: scale(0.8) translateY(20px);
-        }
-        50% {
-          opacity: 0.7;
-          transform: scale(0.9) translateY(10px);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-        }
-      }
-
-      .portrait:hover {
-        transform: scale(1.05) rotate(5deg);
-        box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4),
-          0 0 80px rgba(129, 140, 248, 0.3);
-        border-width: 4px;
-      }
-
-      .portrait:hover::after {
-        content: "";
-        position: absolute;
-        inset: -20px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          transparent 30%,
-          var(--accent-glow) 70%
-        );
-        animation: portraitPulse 2s ease-in-out infinite;
-        z-index: -1;
-      }
-
-      @keyframes portraitPulse {
-        0%,
-        100% {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        50% {
-          opacity: 0.6;
-          transform: scale(1.2);
-        }
       }
 
       .introduction p {
@@ -192,127 +129,60 @@ const jobs: JobExperience[] = [
         line-height: 1.8;
         max-width: 600px;
         margin: 0 auto;
-        position: relative;
-        z-index: 2;
-        animation: textFade 1s ease-out 0.3s both;
-      }
-
-      @keyframes textFade {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .introduction strong {
         color: var(--accent-light);
         font-weight: 600;
-        position: relative;
       }
 
       .introduction a {
-        display: inline-block;
-        position: relative;
-        color: var(--accent-light);
-        font-weight: 600;
-        text-decoration: none;
-        transition: all var(--transition-base);
-      }
-
-      .introduction a::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: var(--gradient-accent);
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform var(--transition-base);
+        color: white;
+        text-decoration: underline;
       }
 
       .introduction a:hover {
         color: var(--text-primary);
-        transform: translateY(-2px);
-        text-shadow: 0 0 20px var(--accent-glow);
-      }
-
-      .introduction a:hover::after {
-        transform: scaleX(1);
-        transform-origin: left;
       }
 
       .cta-link {
-        background: var(--gradient-accent) !important;
-        color: white !important;
-        padding: 0.75rem 1.5rem !important;
-        border-radius: 8px !important;
-        font-weight: 700 !important;
-        text-shadow: none !important;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-        transition: all var(--transition-base) !important;
-        margin: 0.5rem 0 0 1rem;
-        white-space: nowrap;
+        background: var(--accent);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 0.5rem;
         display: inline-block;
       }
 
-      .cta-link::after {
-        display: none !important;
-      }
-
       .cta-link:hover {
-        transform: translateY(-2px) scale(1.05) !important;
-        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4) !important;
-        color: white !important;
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5) !important;
+        opacity: 0.9;
+        color: white;
       }
 
-      main > * {
-        --card-delay: calc(var(--card-index, 0) * 150ms);
+      .cta-link.secondary {
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent-light);
       }
 
-      main > :nth-child(1) {
-        --card-index: 0;
-      }
-      main > :nth-child(2) {
-        --card-index: 1;
-      }
-      main > :nth-child(3) {
-        --card-index: 2;
-      }
-      main > :nth-child(4) {
-        --card-index: 3;
+      .cta-link.secondary:hover {
+        background: var(--accent);
+        color: white;
       }
 
       .hamster-section {
         max-width: 1000px;
-        margin: 4rem auto 2rem;
+        margin: 3rem auto 2rem;
         padding: 0 2rem;
         text-align: center;
-        --card-delay: calc(var(--card-index, 0) * 150ms + 600ms);
-        animation: cardEntry 0.6s var(--transition-spring) var(--card-delay) both;
-      }
-
-      @keyframes cardEntry {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       @media (max-width: 768px) {
         .portrait {
-          width: 150px;
-          height: 150px;
+          width: 140px;
+          height: 140px;
         }
 
         .introduction p {
@@ -320,11 +190,24 @@ const jobs: JobExperience[] = [
           padding: 0 1rem;
         }
 
+        .introduction a {
+          font-size: 1rem;
+          padding: 0 1rem;
+          color: white;
+        }
+
         .hamster-section {
           padding: 0 1rem;
-          margin: 3rem auto 1rem;
+          margin: 2rem auto 1rem;
         }
       }
     </style>
+
+    <script>
+      document.getElementById('view-experience-btn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
+      });
+    </script>
   </body>
 </html>

@@ -12,9 +12,6 @@
   --surface: rgba(30, 41, 59, 0.5);
   --surface-light: rgba(51, 65, 85, 0.3);
   --border: rgba(148, 163, 184, 0.1);
-  --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --gradient-accent: linear-gradient(
     135deg,
     var(--accent) 0%,
@@ -23,15 +20,6 @@
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-spring: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 *,
@@ -53,8 +41,7 @@ body {
 }
 
 body {
-  background: linear-gradient(135deg, var(--primary) 0%, #0f172a 100%);
-  background-attachment: fixed;
+  background: var(--primary);
   font-family: "Inter", system-ui, -apple-system, sans-serif;
   font-size: 16px;
   line-height: 1.6;
@@ -62,46 +49,8 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(
-      circle at 20% 80%,
-      var(--accent-glow) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(129, 140, 248, 0.3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 40%,
-      rgba(99, 102, 241, 0.2) 0%,
-      transparent 50%
-    );
-  pointer-events: none;
-  z-index: 1;
-  animation: backgroundPulse 20s ease-in-out infinite;
-}
-
-@keyframes backgroundPulse {
-  0%,
-  100% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
 }
 
 main {
@@ -109,18 +58,6 @@ main {
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 h1,
@@ -139,21 +76,7 @@ h6 {
 h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 900;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientShift 8s ease infinite;
-}
-
-@keyframes gradientShift {
-  0%,
-  100% {
-    filter: hue-rotate(0deg);
-  }
-  50% {
-    filter: hue-rotate(30deg);
-  }
+  color: var(--accent-light);
 }
 
 h2 {
@@ -174,28 +97,12 @@ p {
 a {
   color: var(--accent-light);
   text-decoration: none;
-  position: relative;
-  transition: color var(--transition-base);
   font-weight: 500;
-}
-
-a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-accent);
-  transition: width var(--transition-base);
 }
 
 a:hover {
   color: var(--text-primary);
-}
-
-a:hover::after {
-  width: 100%;
+  text-decoration: underline;
 }
 
 strong,
@@ -214,81 +121,28 @@ nav {
 nav a {
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-}
-
-nav a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--surface-light);
-  transform: translateX(-100%);
-  transition: transform var(--transition-base);
-  z-index: -1;
-}
-
-nav a:hover::before {
-  transform: translateX(0);
 }
 
 nav a:hover {
-  transform: translateY(-2px);
-  color: var(--text-primary);
-}
-
-nav a::after {
-  display: none;
+  background: var(--surface-light);
+  text-decoration: none;
 }
 
 button,
 .button {
-  background: var(--gradient-accent);
+  background: var(--accent);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
   box-shadow: var(--shadow-md);
-}
-
-button::before,
-.button::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-button:hover::before,
-.button:hover::before {
-  width: 300px;
-  height: 300px;
 }
 
 button:hover,
 .button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-xl), var(--shadow-glow);
-}
-
-button:active,
-.button:active {
-  transform: translateY(0);
+  opacity: 0.9;
 }
 
 input,
@@ -300,8 +154,6 @@ select {
   padding: 0.75rem 1rem;
   border-radius: 8px;
   font-size: 16px;
-  transition: all var(--transition-base);
-  backdrop-filter: blur(10px);
 }
 
 input:focus,
@@ -309,8 +161,6 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-  background: var(--surface-light);
 }
 
 code {
@@ -327,7 +177,6 @@ pre {
   padding: 1.5rem;
   border-radius: 12px;
   overflow-x: auto;
-  backdrop-filter: blur(10px);
   border: 1px solid var(--border);
 }
 
@@ -343,17 +192,6 @@ blockquote {
   margin: 1.5rem 0;
   font-style: italic;
   color: var(--text-secondary);
-  position: relative;
-}
-
-blockquote::before {
-  content: '"';
-  position: absolute;
-  left: -10px;
-  top: -20px;
-  font-size: 4rem;
-  color: var(--accent-glow);
-  font-family: serif;
 }
 
 img {
@@ -370,7 +208,6 @@ table {
   background: var(--surface);
   border-radius: 12px;
   overflow: hidden;
-  backdrop-filter: blur(10px);
 }
 
 th {
@@ -389,11 +226,6 @@ td {
 
 tr:last-child td {
   border-bottom: none;
-}
-
-tr:hover {
-  background: var(--surface-light);
-  transition: background var(--transition-fast);
 }
 
 ::selection {
@@ -419,49 +251,6 @@ tr:hover {
   background: var(--accent-light);
 }
 
-.fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.slide-in {
-  animation: slideIn 0.6s ease-out forwards;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.scale-in {
-  animation: scaleIn 0.6s var(--transition-spring) forwards;
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 @media (max-width: 768px) {
   main {
     padding: 1rem;
@@ -474,15 +263,5 @@ tr:hover {
   nav a {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

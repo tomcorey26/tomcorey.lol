@@ -7,6 +7,11 @@ import { Dialog } from "../components/Dialog";
 import { Card } from "../components/Card";
 import JobExperience from "../components/JobExperience";
 
+const firstJobStart = new Date("2020-01-01");
+const yearsOfExperience = Math.floor(
+  (Date.now() - firstJobStart.getTime()) / (1000 * 60 * 60 * 24 * 365.25)
+);
+
 const jobs: JobExperience[] = [
   {
     title: "Software Engineer",
@@ -14,7 +19,7 @@ const jobs: JobExperience[] = [
     companyUrl: "https://www.dealeron.com/",
     emoji: "🚗",
     logo: "https://media.licdn.com/dms/image/v2/D4E0BAQE0rro_noAHwA/company-logo_100_100/B4EZeyBk_QG4AU-/0/1751038448044/dealeron_inc_logo?e=1758758400&v=beta&t=9DLVRNbAbHuJisAREn8yCxqV8-2CNqpiRNASLBgkXjU",
-    startDate: new Date("2020-01-01"),
+    startDate: new Date("2020-12-23"),
     points: [
       `Lead UI development for the inventory team and develop full-stack solutions within a cross-functional agile environment`,
 
@@ -44,7 +49,7 @@ const jobs: JobExperience[] = [
     emoji: "🏥",
     logo: "https://media.licdn.com/dms/image/v2/C4E0BAQEhOw_KVli-CQ/company-logo_100_100/company-logo_100_100/0/1669901807779/cvs_health_logo?e=1758758400&v=beta&t=igAalYXweOJbVvykHVkz6Bzb6srgc3mZBFKl-F1ww6M",
     startDate: new Date("2020-10-01"),
-    endDate: new Date("2020-12-01"),
+    endDate: new Date("2020-12-20"),
     points: [
       "Worked on a SAFe Agile team delivering solutions for the public CVS Health RESTful API",
 
@@ -82,23 +87,27 @@ const jobs: JobExperience[] = [
       <Card className="introduction">
         <img class="portrait" src="tom.jpg" alt="Tom Corey" />
         <p>
-          Hey I'm Tom, a full-stack software engineer from Rhode Island
-          specializing in <strong
+          Hey I'm Tom, a full-stack software engineer from Rhode Island with
+          {yearsOfExperience}+ years of experience specializing in <strong
             >React, Vue, TypeScript, Node.js, and .NET</strong
           >. I have extensive experience building enterprise-scale applications
           in cross-functional agile environments, delivering high-performance
           solutions that serve thousands of users and process millions of
           requests.
-          <strong>
-            I'm currently looking for a new job, so if you're hiring,
-            <a
-              href="mailto:tombcorey@gmail.com"
-              target="_blank"
-              class="cta-link">Please reach out!</a
-            >
-            <a href="#experience" class="cta-link secondary" id="view-experience-btn">View Experience</a>
-          </strong>
+          <strong
+            >I'm currently looking for a new job, so if you're hiring:</strong
+          >
         </p>
+        <div class="cta-buttons">
+          <a
+            href="#experience"
+            class="cta-link secondary"
+            id="view-experience-btn">View My Experience ↓</a
+          >
+          <a href="mailto:tombcorey@gmail.com" class="cta-link gradient-cta"
+            >Shoot Me an Email</a
+          >
+        </div>
       </Card>
 
       <section id="experience">
@@ -138,7 +147,6 @@ const jobs: JobExperience[] = [
 
       .introduction a {
         color: white;
-        text-decoration: underline;
       }
 
       .introduction a:hover {
@@ -146,6 +154,7 @@ const jobs: JobExperience[] = [
       }
 
       .cta-link {
+        display: block;
         background: var(--accent);
         color: white;
         padding: 0.75rem 1.5rem;
@@ -172,6 +181,49 @@ const jobs: JobExperience[] = [
         color: white;
       }
 
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+
+      .gradient-cta {
+        background: linear-gradient(
+          90deg,
+          #667eea,
+          #764ba2,
+          #f093fb,
+          #f5576c,
+          #4facfe,
+          #667eea
+        );
+        background-size: 300% 100%;
+        animation: gradient-shift 4s ease infinite;
+        border: none;
+        color: white;
+        transition: transform 0.2s ease;
+      }
+
+      .gradient-cta:hover {
+        animation: gradient-shift 1.5s ease infinite;
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      @keyframes gradient-shift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
       .hamster-section {
         max-width: 1000px;
         margin: 3rem auto 2rem;
@@ -192,8 +244,19 @@ const jobs: JobExperience[] = [
 
         .introduction a {
           font-size: 1rem;
-          padding: 0 1rem;
           color: white;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .cta-link {
+          padding: 1rem 2rem;
+          font-size: 1.1rem;
+          width: 100%;
+          text-align: center;
         }
 
         .hamster-section {
@@ -204,10 +267,14 @@ const jobs: JobExperience[] = [
     </style>
 
     <script>
-      document.getElementById('view-experience-btn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
-      });
+      document
+        .getElementById("view-experience-btn")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          document
+            .getElementById("experience")
+            ?.scrollIntoView({ behavior: "smooth" });
+        });
     </script>
   </body>
 </html>

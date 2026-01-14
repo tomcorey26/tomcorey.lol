@@ -38,7 +38,23 @@ export default function JobExperience(job: Props) {
         </div>
         <i>
           {formatDate(job.startDate)} -{" "}
-          {job.endDate ? formatDate(job.endDate) : "Present"}
+          {job.endDate ? formatDate(job.endDate) : "Present"} (
+          {(() => {
+            const days = Math.round(
+              ((job.endDate || new Date()).getTime() -
+                job.startDate.getTime()) /
+                (1000 * 60 * 60 * 24)
+            );
+            const years = Math.floor(days / 365.25);
+            const months = Math.round(days / 30.44);
+
+            if (years >= 1) {
+              return `${years} ${years === 1 ? "year" : "years"}`;
+            } else {
+              return `${months} ${months === 1 ? "month" : "months"}`;
+            }
+          })()}
+          )
         </i>
         <ul className="job__points">
           {job.points.map((point, index) => (

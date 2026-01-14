@@ -1,32 +1,41 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../config';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../config";
 ---
 
 <header>
   <div class="header-container">
-    <h2>
-      {SITE_TITLE}
-    </h2>
-    <nav>
+    <div class="header-top">
+      <h2>
+        {SITE_TITLE}
+      </h2>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+    <nav id="nav">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
-
       <HeaderLink
         href="https://www.linkedin.com/in/tom-corey-499419170/"
-        target="_blank">Linkedin</HeaderLink
+        target="_blank"
       >
-      <HeaderLink href="https://github.com/tomcorey26" target="_blank"
-        >GitHub</HeaderLink
-      >
+        Linkedin
+      </HeaderLink>
+      <HeaderLink href="https://github.com/tomcorey26" target="_blank">
+        GitHub
+      </HeaderLink>
     </nav>
   </div>
 </header>
+
 <style>
   header {
-    margin: 0 0 1.5rem;
-    padding: 2rem 0;
+    margin: 0 0 0.5rem;
+    padding: 1rem 0;
   }
 
   .header-container {
@@ -37,7 +46,7 @@ import { SITE_TITLE } from '../config';
   }
 
   .header-container::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2rem;
     left: 2rem;
@@ -47,18 +56,56 @@ import { SITE_TITLE } from '../config';
     opacity: 0.3;
   }
 
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   h2 {
-    margin: 0 0 1rem 0;
+    margin: 0;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
     color: var(--accent-light);
     letter-spacing: -0.5px;
   }
 
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 100;
+  }
+
+  .hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: var(--accent-light);
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
   nav {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    margin-top: 1rem;
   }
 
   @media (max-width: 768px) {
@@ -70,5 +117,42 @@ import { SITE_TITLE } from '../config';
       left: 1rem;
       right: 1rem;
     }
+
+    .hamburger {
+      display: flex;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1rem;
+      background: var(--surface);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    nav.open {
+      display: flex;
+    }
+
+    nav :global(a) {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav :global(a:last-child) {
+      border-bottom: none;
+    }
   }
 </style>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav");
+
+  hamburger?.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    nav?.classList.toggle("open");
+  });
+</script>
